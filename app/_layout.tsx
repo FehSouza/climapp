@@ -15,5 +15,9 @@ export default function RootLayout() {
 
   if (!fontsLoaded) return null
 
-  return <Stack />
+  return (
+    <Stack>
+      <Stack.Screen name="index" options={{ headerShown: false }} />
+    </Stack>
+  )
 }

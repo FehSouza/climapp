@@ -1,11 +1,17 @@
 import { theme } from '@/theme'
-import { StyleSheet, Text, View } from 'react-native'
+import { LinearGradient } from 'expo-linear-gradient'
+import { StatusBar, StyleSheet, Text } from 'react-native'
 
 export default function Index() {
   return (
-    <View style={style.container}>
+    <LinearGradient
+      colors={[theme.colors.blue500, theme.colors.blue700]}
+      style={[style.container, StyleSheet.absoluteFill]}
+    >
+      <StatusBar backgroundColor={theme.colors.blue500} barStyle={'light-content'} translucent />
+
       <Text style={style.text}>Hello World</Text>
-    </View>
+    </LinearGradient>
   )
 }
 
