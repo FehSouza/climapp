@@ -1,10 +1,15 @@
 import { theme } from '@/theme'
+import { useRouter } from 'expo-router'
 import { Pressable, StyleSheet, Text } from 'react-native'
 import { ArrowIcon } from '../icons'
 
 export const EnterButton = () => {
+  const router = useRouter()
+
+  const handlePress = () => router.push('/cities')
+
   return (
-    <Pressable style={({ pressed }) => [style.button, pressed && style.active]}>
+    <Pressable style={({ pressed }) => [style.button, pressed && style.active]} onPress={handlePress}>
       <Text style={style.text}>Entrar</Text>
       <ArrowIcon />
     </Pressable>
