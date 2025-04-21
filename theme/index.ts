@@ -12,6 +12,7 @@ export const theme = {
     violet300: '#7693FF',
     violet500: '#4463D5',
     white: '#FFFFFF',
+    whiteTrans15: '#ffffff26',
   },
 
   fontSize: {
