@@ -1,16 +1,10 @@
 import { EnterButton, LogoIcon } from '@/components'
 import { theme } from '@/theme'
-import { LinearGradient } from 'expo-linear-gradient'
-import { Image, StatusBar, StyleSheet, Text } from 'react-native'
+import { Image, StyleSheet, Text, View } from 'react-native'
 
 export default function Index() {
   return (
-    <LinearGradient
-      colors={[theme.colors.blue500, theme.colors.blue700]}
-      style={[style.container, StyleSheet.absoluteFill]}
-    >
-      <StatusBar backgroundColor={theme.colors.blue500} barStyle={'light-content'} translucent />
-
+    <View style={style.container}>
       <LogoIcon />
 
       <Image
@@ -24,7 +18,7 @@ export default function Index() {
       <Text style={style.text}>Boas-vindas!</Text>
 
       <EnterButton />
-    </LinearGradient>
+    </View>
   )
 }
 

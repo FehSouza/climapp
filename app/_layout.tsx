@@ -1,28 +1,23 @@
+import { theme } from '@/theme'
 import {
   Montserrat_400Regular,
   Montserrat_600SemiBold,
   Montserrat_700Bold,
   useFonts,
 } from '@expo-google-fonts/montserrat'
-import { Stack } from 'expo-router'
-
-const options = {
-  headerShown: false,
-}
+import { LinearGradient } from 'expo-linear-gradient'
+import { Slot } from 'expo-router'
+import { StatusBar, StyleSheet } from 'react-native'
 
 export default function RootLayout() {
-  const [fontsLoaded] = useFonts({
-    Montserrat_400Regular,
-    Montserrat_600SemiBold,
-    Montserrat_700Bold,
-  })
+  const [fontsLoaded] = useFonts({ Montserrat_400Regular, Montserrat_600SemiBold, Montserrat_700Bold })
 
   if (!fontsLoaded) return null
 
   return (
-    <Stack>
-      <Stack.Screen name="index" options={options} />
-      <Stack.Screen name="cities" options={options} />
-    </Stack>
+    <LinearGradient colors={[theme.colors.blue500, theme.colors.blue700]} style={StyleSheet.absoluteFill}>
+      <StatusBar backgroundColor={theme.colors.blue500} barStyle={'light-content'} translucent />
+      <Slot />
+    </LinearGradient>
   )
 }
