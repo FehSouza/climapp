@@ -1,6 +1,7 @@
+import { EnterButton, LogoIcon } from '@/components'
 import { theme } from '@/theme'
 import { LinearGradient } from 'expo-linear-gradient'
-import { StatusBar, StyleSheet, Text } from 'react-native'
+import { Image, StatusBar, StyleSheet, Text } from 'react-native'
 
 export default function Index() {
   return (
@@ -10,7 +11,19 @@ export default function Index() {
     >
       <StatusBar backgroundColor={theme.colors.blue500} barStyle={'light-content'} translucent />
 
-      <Text style={style.text}>Hello World</Text>
+      <LogoIcon />
+
+      <Image
+        source={require('@/assets/images/homeImage.png')}
+        accessibilityLabel="Ícone representando várias condições climáticas: sol, nuvens, chuva, neve e céu nublado, organizados em um gráfico circular estilizado."
+        fadeDuration={500}
+        width={192}
+        height={180}
+      />
+
+      <Text style={style.text}>Boas-vindas!</Text>
+
+      <EnterButton />
     </LinearGradient>
   )
 }
@@ -20,11 +33,13 @@ const style = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    gap: theme.spacing['2xl'],
+    padding: theme.spacing.lg,
   },
 
   text: {
-    fontFamily: theme.fontFamily.montserrat700,
+    fontFamily: theme.fontFamily.montserrat400,
     fontSize: theme.fontSize.xl,
-    color: theme.colors.violet300,
+    color: theme.colors.white,
   },
 })

@@ -32,7 +32,8 @@ export const theme = {
     xs: 8,
     sm: 16,
     md: 24,
-    lg: 40,
-    xl: 64,
+    lg: 32,
+    xl: 40,
+    '2xl': 64,
   },
 }
