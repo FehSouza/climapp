@@ -1,15 +1,17 @@
 import { CityCard, SearchBox } from '@/components'
 import { cities } from '@/mock'
 import { theme } from '@/theme'
+import { ordersCities } from '@/utils'
 import { useState } from 'react'
 import { FlatList, StyleSheet, View } from 'react-native'
 
 export default function Cities() {
-  const [filteredCities, setFilteredCities] = useState(cities)
+  const orderedCities = ordersCities(cities)
+  const [filteredCities, setFilteredCities] = useState(orderedCities)
 
   return (
     <View style={style.container}>
-      <SearchBox cities={cities} setFilteredCities={setFilteredCities} />
+      <SearchBox cities={orderedCities} setFilteredCities={setFilteredCities} />
 
       <FlatList
         data={filteredCities}
