@@ -1,15 +1,18 @@
 import { CityCard, SearchBox } from '@/components'
 import { cities } from '@/mock'
 import { theme } from '@/theme'
+import { useState } from 'react'
 import { FlatList, StyleSheet, View } from 'react-native'
 
 export default function Cities() {
+  const [filteredCities, setFilteredCities] = useState(cities)
+
   return (
     <View style={style.container}>
-      <SearchBox />
+      <SearchBox cities={cities} setFilteredCities={setFilteredCities} />
 
       <FlatList
-        data={cities}
+        data={filteredCities}
         renderItem={({ item }) => <CityCard item={item} />}
         keyExtractor={(item, index) => `${index}-${item.city}`}
         contentContainerStyle={style.list}
