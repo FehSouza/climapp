@@ -1,7 +1,8 @@
 import { City } from '@/mock/cities/types'
 import { theme } from '@/theme'
+import { useRouter } from 'expo-router'
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { Pressable, StyleSheet, Text } from 'react-native'
 import { WeatherIcon } from '../icons'
 
 interface CityCardProps {
@@ -9,15 +10,20 @@ interface CityCardProps {
 }
 
 export const CityCard = ({ item }: CityCardProps) => {
-  const formattedName = item.city.replace(',', ' -')
+  const router = useRouter()
+
+  const city = item.city
   const temp = item.temp
+  const formattedCity = city.replace(', ', ' - ')
+
+  const handlePress = () => router.push(`/${city}`)
 
   return (
-    <View style={style.container}>
+    <Pressable style={style.container} onPress={handlePress}>
       <WeatherIcon />
-      <Text style={style.name}>{formattedName}</Text>
+      <Text style={style.name}>{formattedCity}</Text>
       <Text style={style.temp}>{temp}°</Text>
-    </View>
+    </Pressable>
   )
 }
 
