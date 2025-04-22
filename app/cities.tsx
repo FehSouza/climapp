@@ -1,24 +1,33 @@
-import { CityCard } from '@/components'
+import { CityCard, SearchBox } from '@/components'
 import { cities } from '@/mock'
 import { theme } from '@/theme'
 import { FlatList, StyleSheet, View } from 'react-native'
 
 export default function Cities() {
   return (
-    <FlatList
-      data={cities}
-      renderItem={({ item }) => <CityCard item={item} />}
-      keyExtractor={(item, index) => `${index}-${item.city}`}
-      contentContainerStyle={style.container}
-      ItemSeparatorComponent={() => <View style={style.separator} />}
-    />
+    <View style={style.container}>
+      <SearchBox />
+
+      <FlatList
+        data={cities}
+        renderItem={({ item }) => <CityCard item={item} />}
+        keyExtractor={(item, index) => `${index}-${item.city}`}
+        contentContainerStyle={style.list}
+        ItemSeparatorComponent={() => <View style={style.separator} />}
+      />
+    </View>
   )
 }
 
 const style = StyleSheet.create({
   container: {
-    paddingVertical: theme.spacing.xl,
+    gap: theme.spacing.xl,
+    paddingVertical: theme.spacing['2xl'],
     paddingHorizontal: theme.spacing.sm,
+  },
+
+  list: {
+    paddingBottom: theme.spacing.xl,
   },
 
   separator: {

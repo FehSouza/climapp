@@ -24,6 +24,7 @@ export const CityCard = ({ item }: CityCardProps) => {
 const style = StyleSheet.create({
   container: {
     width: '100%',
+    minHeight: 72,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
