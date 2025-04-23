@@ -1,4 +1,4 @@
-import { ArrowLeftIcon, CityCardDetails, Loading, TagDay } from '@/components'
+import { ArrowLeftIcon, CityCardDetails, Error, Loading, TagDay } from '@/components'
 import { City } from '@/mock/cities/types'
 import { getCity } from '@/services'
 import { theme } from '@/theme'
@@ -26,9 +26,9 @@ export default function CityDetails() {
     fetchCity()
   }, [])
 
-  if (!cityName) return null
+  if (!cityName) return <Error message="Sem nome de cidade." />
   if (loading) return <Loading />
-  if (!cityData || error) return <Text>{error}</Text>
+  if (!cityData || error) return <Error message={error || 'Cidade não encontrada.'} />
 
   const city = cityData.city
   const formattedCity = city.replace(', ', ' - ')
