@@ -1,4 +1,7 @@
 export * from './CityCard'
+export * from './CityCardDetails'
 export * from './EnterButton'
 export * from './icons'
+export * from './Loading'
 export * from './SearchBox'
+export * from './TagDay'
