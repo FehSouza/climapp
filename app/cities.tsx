@@ -3,7 +3,7 @@ import { cities } from '@/mock'
 import { theme } from '@/theme'
 import { ordersCities } from '@/utils'
 import { useState } from 'react'
-import { FlatList, StyleSheet, View } from 'react-native'
+import { FlatList, StyleSheet, Text, View } from 'react-native'
 
 export default function Cities() {
   const orderedCities = ordersCities(cities)
@@ -13,13 +13,17 @@ export default function Cities() {
     <View style={style.container}>
       <SearchBox cities={orderedCities} setFilteredCities={setFilteredCities} />
 
-      <FlatList
-        data={filteredCities}
-        renderItem={({ item }) => <CityCard item={item} />}
-        keyExtractor={(item, index) => `${index}-${item.city}`}
-        contentContainerStyle={style.list}
-        ItemSeparatorComponent={() => <View style={style.separator} />}
-      />
+      {!!filteredCities.length && (
+        <FlatList
+          data={filteredCities}
+          renderItem={({ item }) => <CityCard item={item} />}
+          keyExtractor={(item, index) => `${index}-${item.city}`}
+          contentContainerStyle={style.list}
+          ItemSeparatorComponent={() => <View style={style.separator} />}
+        />
+      )}
+
+      {!filteredCities.length && <Text style={style.text}>Nenhuma cidade encontrada.</Text>}
     </View>
   )
 }
@@ -37,5 +41,12 @@ const style = StyleSheet.create({
 
   separator: {
     height: theme.spacing.sm,
+  },
+
+  text: {
+    fontFamily: theme.fontFamily.montserrat400,
+    fontSize: theme.fontSize.md,
+    color: theme.colors.white,
+    textAlign: 'center',
   },
 })
