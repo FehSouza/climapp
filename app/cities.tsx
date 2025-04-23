@@ -1,17 +1,34 @@
-import { CityCard, SearchBox } from '@/components'
-import { cities } from '@/mock'
+import { CityCard, Error, Loading, SearchBox } from '@/components'
+import { City } from '@/mock/cities/types'
+import { getCities } from '@/services'
 import { theme } from '@/theme'
-import { ordersCities } from '@/utils'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { FlatList, StyleSheet, Text, View } from 'react-native'
 
 export default function Cities() {
-  const orderedCities = ordersCities(cities)
-  const [filteredCities, setFilteredCities] = useState(orderedCities)
+  const [cities, setCities] = useState<City[]>([])
+  const [filteredCities, setFilteredCities] = useState<City[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+
+  useEffect(() => {
+    const fetchCities = async () => {
+      const cities = await getCities()
+      if (!cities?.length) setError('Nenhuma cidade encontrada.')
+      if (!!cities?.length) setCities(cities)
+      if (!!cities?.length) setFilteredCities(cities)
+      setLoading(false)
+    }
+
+    fetchCities()
+  }, [])
+
+  if (loading) return <Loading />
+  if (error) return <Error message={error} />
 
   return (
     <View style={style.container}>
-      <SearchBox cities={orderedCities} setFilteredCities={setFilteredCities} />
+      <SearchBox cities={cities} setFilteredCities={setFilteredCities} />
 
       {!!filteredCities.length && (
         <FlatList
