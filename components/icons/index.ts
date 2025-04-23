@@ -1,5 +1,7 @@
 export * from './ArrowIcon'
 export * from './ArrowLeftIcon'
+export * from './HumidityIcon'
 export * from './LogoIcon'
 export * from './SearchIcon'
+export * from './TempIcon'
 export * from './WeatherIcon'

@@ -1,4 +1,4 @@
-import { ArrowLeftIcon } from '@/components'
+import { ArrowLeftIcon, HumidityIcon, TempIcon, WeatherIcon } from '@/components'
 import { City } from '@/mock/cities/types'
 import { getCity } from '@/services'
 import { theme } from '@/theme'
@@ -33,6 +33,13 @@ export default function CityDetails() {
   const city = cityData.city
   const temp = cityData.temp
   const formattedCity = city.replace(', ', ' - ')
+  const [day, month] = cityData.date.split('/')
+  const description = cityData.description
+  const humidity = cityData.humidity
+  const min = cityData.forecast[0].min
+  const max = cityData.forecast[0].max
+
+  console.log(cityData)
 
   return (
     <View style={style.container}>
@@ -42,6 +49,37 @@ export default function CityDetails() {
         </Pressable>
 
         <Text style={style.cityName}>{formattedCity}</Text>
+      </View>
+
+      <View style={style.cardContainer}>
+        <View style={style.headerCard}>
+          <Text style={style.textHeader}>Hoje</Text>
+          <Text style={style.textHeader}>
+            ({day}/{month})
+          </Text>
+        </View>
+
+        <View style={style.mainCard}>
+          <WeatherIcon width={72} height={64} />
+          <Text style={style.tempTextMain}>{temp}°</Text>
+          <Text style={style.descriptionTextMain}>{description}</Text>
+        </View>
+
+        <View>
+          <View>
+            <HumidityIcon />
+            <Text>Umidade:</Text>
+            <Text>{humidity}%</Text>
+          </View>
+
+          <View>
+            <TempIcon />
+            <Text>Min/Max:</Text>
+            <Text>
+              {min}/{max}°
+            </Text>
+          </View>
+        </View>
       </View>
     </View>
   )
@@ -75,6 +113,45 @@ const style = StyleSheet.create({
   cityName: {
     fontFamily: theme.fontFamily.montserrat600,
     fontSize: theme.fontSize.lg,
+    color: theme.colors.white,
+  },
+
+  cardContainer: {
+    width: '100%',
+    backgroundColor: theme.colors.violet500,
+    borderRadius: theme.borderRadius.md,
+    padding: theme.spacing.sm,
+    alignItems: 'center',
+    gap: theme.spacing.md,
+  },
+
+  headerCard: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: theme.spacing.xs,
+  },
+
+  textHeader: {
+    fontFamily: theme.fontFamily.montserrat600,
+    fontSize: theme.fontSize.md,
+    color: theme.colors.white,
+  },
+
+  mainCard: {
+    alignItems: 'center',
+  },
+
+  tempTextMain: {
+    fontFamily: theme.fontFamily.montserrat700,
+    fontSize: theme.fontSize['2xl'],
+    color: theme.colors.white,
+    lineHeight: 52,
+    marginTop: -12,
+  },
+
+  descriptionTextMain: {
+    fontFamily: theme.fontFamily.montserrat400,
+    fontSize: theme.fontSize.sm,
     color: theme.colors.white,
   },
 })

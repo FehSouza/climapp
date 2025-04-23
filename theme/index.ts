@@ -21,6 +21,7 @@ export const theme = {
     md: 16,
     lg: 20,
     xl: 25,
+    '2xl': 44,
   },
 
   fontFamily: {
