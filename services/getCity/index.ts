@@ -1,4 +1,4 @@
-import { City } from '@/mock/cities/types'
+import { City } from '@/@types'
 
 export const getCity = async (city: string) => {
   try {

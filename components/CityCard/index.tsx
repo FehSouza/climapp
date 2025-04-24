@@ -1,4 +1,4 @@
-import { City } from '@/mock/cities/types'
+import { City } from '@/@types'
 import { theme } from '@/theme'
 import { useRouter } from 'expo-router'
 import React from 'react'

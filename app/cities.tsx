@@ -1,5 +1,5 @@
+import { City } from '@/@types'
 import { CityCard, Error, Loading, SearchBox } from '@/components'
-import { City } from '@/mock/cities/types'
 import { getCities } from '@/services'
 import { theme } from '@/theme'
 import { useEffect, useState } from 'react'

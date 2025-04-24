@@ -1,5 +1,5 @@
+import { Forecast } from '@/@types'
 import { WEEK_DAY_DICTIONARY } from '@/dictionary'
-import { Forecast } from '@/mock/cities/types'
 import { theme } from '@/theme'
 import { StyleSheet, Text, View } from 'react-native'
 import { WeatherIcon } from '../icons'

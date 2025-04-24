@@ -1,5 +1,5 @@
+import { City } from '@/@types'
 import { ArrowLeftIcon, CityCardDetails, Error, Loading, TagDay } from '@/components'
-import { City } from '@/mock/cities/types'
 import { getCity } from '@/services'
 import { theme } from '@/theme'
 import { useLocalSearchParams, useRouter } from 'expo-router'

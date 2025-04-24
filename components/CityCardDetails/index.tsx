@@ -1,4 +1,4 @@
-import { City } from '@/mock/cities/types'
+import { City } from '@/@types'
 import { theme } from '@/theme'
 import { StyleSheet, Text, View } from 'react-native'
 import { HumidityIcon, TempIcon, WeatherIcon } from '../icons'
