@@ -16,6 +16,7 @@ export const TagDay = ({ item, index }: TagDayProps) => {
   const min = item.min
   const max = item.max
   const minMax = `${min}/${max}°`
+  const condition = item.condition
 
   return (
     <View style={style.container}>
@@ -24,7 +25,7 @@ export const TagDay = ({ item, index }: TagDayProps) => {
         <Text style={style.text}>{date}</Text>
       </View>
 
-      <WeatherIcon />
+      <WeatherIcon condition={condition} />
       <Text style={style.temp}>{minMax}</Text>
     </View>
   )

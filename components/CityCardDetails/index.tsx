@@ -16,6 +16,7 @@ export const CityCardDetails = ({ city }: CityCardDetailsProps) => {
   const min = city.forecast[0].min
   const max = city.forecast[0].max
   const minMax = `${min}/${max}°`
+  const condition = city.condition_slug
 
   return (
     <View style={style.container}>
@@ -25,7 +26,7 @@ export const CityCardDetails = ({ city }: CityCardDetailsProps) => {
       </View>
 
       <View style={style.tempContent}>
-        <WeatherIcon width={72} height={64} />
+        <WeatherIcon width={64} height={64} condition={condition} />
         <Text style={style.temp}>{temp}</Text>
         <Text style={style.description}>{description}</Text>
       </View>
@@ -74,7 +75,6 @@ const style = StyleSheet.create({
   },
 
   temp: {
-    marginTop: -12,
     fontFamily: theme.fontFamily.montserrat700,
     fontSize: theme.fontSize['2xl'],
     color: theme.colors.white,

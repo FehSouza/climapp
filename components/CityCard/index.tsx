@@ -14,13 +14,14 @@ export const CityCard = ({ item }: CityCardProps) => {
 
   const city = item.city
   const temp = item.temp
+  const condition = item.condition_slug
   const formattedCity = city.replace(', ', ' - ')
 
   const handlePress = () => router.push(`/${city}`)
 
   return (
     <Pressable style={style.container} onPress={handlePress}>
-      <WeatherIcon />
+      <WeatherIcon condition={condition} />
       <Text style={style.name}>{formattedCity}</Text>
       <Text style={style.temp}>{temp}°</Text>
     </Pressable>
